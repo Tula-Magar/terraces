@@ -8,8 +8,8 @@ html {
 }
 
 .scene {
-  background-image: url("./rice-plantation-1822444.jpg"); /* Replace with the path to your image */
-  background-size: cover; /* This ensures the image covers the entire viewport */
+  background-image: url("./rice-plantation-1822444.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   width: 100%;
@@ -20,42 +20,42 @@ html {
 }
 @keyframes dayNightCycle {
   0% {
-    filter: brightness(0.2); /* simulating night */
+    filter: brightness(0.2);
   }
   40% {
-    filter: brightness(0.4); /* simulating night */
+    filter: brightness(0.4);
   }
   50% {
-    filter: brightness(1); /* midday */
+    filter: brightness(1);
   }
   90% {
-    filter: brightness(0.3); /* returning to night */
+    filter: brightness(0.3);
   }
   100% {
-    filter: brightness(0.2); /* returning to night */
+    filter: brightness(0.2);
   }
 }
 
 .cloud {
   position: absolute;
-  top: 0; /* Adjust this value as required to position the cloud vertically */
-  left: -20%; /* Start position off-screen to the left */
-  opacity: 0.8; /* Adjust this if you want the cloud to be more or less transparent */
+  top: 0;
+  left: -20%;
+  opacity: 0.8;
   animation: driftCloud 60s linear infinite,
     dayNightCycle 60s infinite alternate;
-  z-index: 1; /* Keeping the cloud below the birds */
+  z-index: 1;
 }
 @keyframes driftCloud {
   0% {
-    left: -150%; /* Start from far left */
+    left: -150%;
   }
   100% {
-    left: 250%; /* Move to far right */
+    left: 250%;
   }
 }
 .raindrop {
   position: absolute;
-  bottom: 0; /* or adjust it to start from the top position of the cloud */
+  bottom: 0;
   width: 2px;
   height: 10px;
   background-color: blue;
@@ -85,14 +85,14 @@ html {
     opacity: 0.8;
   }
   8% {
-    opacity: 0.4; /* stars visible but at low shimmer */
+    opacity: 0.4;
   }
   10% {
-    opacity: 0; /* stars fully hidden */
+    opacity: 0;
   }
   20%,
   75% {
-    opacity: 0; /* stars visible but at low shimmer */
+    opacity: 0;
   }
   90% {
     opacity: 0.4;
@@ -115,11 +115,11 @@ html {
     transform: translateX(50vw);
   }
   10% {
-    opacity: 0; /* stars fully hidden */
+    opacity: 0;
   }
   20%,
   75% {
-    opacity: 0; /* stars visible but at low shimmer */
+    opacity: 0;
   }
   90% {
     opacity: 0.4;
@@ -215,17 +215,17 @@ html {
   height: 2px;
   opacity: 0.7;
   animation: drift 20s linear infinite, dayNightCycle 60s infinite alternate;
-  animation-delay: calc(-20s * random()); /* will be replaced in JavaScript */
+  animation-delay: calc(-20s * random());
 }
 
 @keyframes drift {
   0% {
-    transform: translateX(0) translateY(-100%); /* start above the viewport */
+    transform: translateX(0) translateY(-100%);
   }
   90% {
   }
   100% {
-    transform: translateX(-10vw) translateY(110vh); /* drift diagonally downwards and slightly to the left */
+    transform: translateX(-10vw) translateY(110vh);
   }
 }
 
@@ -235,7 +235,7 @@ footer {
   left: 10px;
   font-size: 0.8em;
   color: white;
-  background-color: rgba(0, 0, 0, 0.6); /* slightly transparent black */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -255,7 +255,7 @@ footer {
 }
 
 footer a {
-  color: #ffd700; /* golden color for links */
+  color: #ffd700;
   text-decoration: none;
 }
 

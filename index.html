@@ -29,46 +29,41 @@
       </a>
     </footer>
     <script>
-      const cloudCount = 10; // Adjust this number for the desired number of clouds
+      const cloudCount = 10;
 
       for (let i = 0; i < cloudCount; i++) {
         const cloudEl = document.createElement("img");
         cloudEl.src = "./cloud.png";
         cloudEl.className = "cloud";
 
-        // Randomize the cloud's initial left position
-        cloudEl.style.left = `${Math.random() * 10}vw`; // Allow cloud to start from any point across the width
+        cloudEl.style.left = `${Math.random() * 10}vw`;
 
-        // Randomize the cloud's size
-        const cloudSize = 20 + Math.random() * 20; // Size will be between 20% to 40% of viewport width
-        cloudEl.style.width = `${cloudSize}vw`; // Using viewport width for size
+        const cloudSize = 20 + Math.random() * 20;
+        cloudEl.style.width = `${cloudSize}vw`;
         cloudEl.style.height = "auto";
 
-        // Randomize the cloud's top position
-        const cloudTopMin = 0; // the minimum top value in percentage
-        const cloudTopMax = 15; // the maximum top value in percentage
+        const cloudTopMin = 0;
+        const cloudTopMax = 15;
         const cloudTop =
           cloudTopMin + Math.random() * (cloudTopMax - cloudTopMin);
         cloudEl.style.top = `${cloudTop}vh`;
 
-        // Adjust the animation duration to vary the cloud's speed
-        const cloudSpeed = 50 + Math.random() * 60; // Duration will be between 50s to 110s
-        cloudEl.style.animationDuration = `${cloudSpeed}s, 60s`; // Apply duration to driftCloud animation, 60s for dayNightCycle
+        const cloudSpeed = 50 + Math.random() * 60;
+        cloudEl.style.animationDuration = `${cloudSpeed}s, 60s`;
 
         document.body.appendChild(cloudEl);
       }
 
       for (let i = 0; i < 7; i++) {
         const birdEl = document.createElement("img");
-        birdEl.src = "../images/bird.svg";
+        birdEl.src = "./bird.svg";
         birdEl.className = "bird";
 
         const birdSize = 70 + Math.random() * 60;
         birdEl.style.width = birdSize + "px";
         birdEl.style.height = "auto";
 
-        // Determine bird's flying direction based on i
-        const shouldFlyRight = i < 4; // first three birds fly right to left
+        const shouldFlyRight = i < 4;
         birdEl.style.left = shouldFlyRight ? "150%" : "-50%";
         birdEl.style.transform = shouldFlyRight ? "scaleX(1)" : "scaleX(-1)";
 
@@ -85,32 +80,29 @@
         const particle = document.createElement("div");
         particle.className = "particle";
 
-        // Set random starting positions across the width of the viewport
         particle.style.left = `${Math.random() * window.innerWidth}px`;
-        particle.style.top = `${-10 - Math.random() * 10}vh`; // start above the viewport
+        particle.style.top = `${-10 - Math.random() * 10}vh`;
 
-        // Set a random delay for the animation start to stagger the particles
-        const animationDelay = (-Math.random() * 20).toFixed(2); // Random delay between -0s and -20s
+        const animationDelay = (-Math.random() * 20).toFixed(2);
         particle.style.animationDelay = `${animationDelay}s`;
 
         document.querySelector(".scene").appendChild(particle);
       }
       const starCount = 150;
-      const movingStarPercentage = 0.3; // 30% of stars will move
+      const movingStarPercentage = 0.3;
 
       for (let i = 0; i < starCount; i++) {
         const starEl = document.createElement("div");
         starEl.className = "star";
 
-        // Randomly decide if this star should move
         if (Math.random() < movingStarPercentage) {
           starEl.classList.add("moving-star");
         }
 
         starEl.style.left = `${Math.random() * 100}vw`;
-        starEl.style.top = `${Math.random() * 50}vh`; // limiting stars to top half for sky representation
+        starEl.style.top = `${Math.random() * 50}vh`;
 
-        const starSize = 1 + Math.random() * 2; // Random size between 1px and 3px
+        const starSize = 1 + Math.random() * 2;
         starEl.style.width = `${starSize}px`;
         starEl.style.height = `${starSize}px`;
 
