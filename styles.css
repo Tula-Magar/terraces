@@ -1,0 +1,264 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scene {
+  background-image: url("./rice-plantation-1822444.jpg"); /* Replace with the path to your image */
+  background-size: cover; /* This ensures the image covers the entire viewport */
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: dayNightCycle 60s infinite alternate;
+  z-index: -1;
+}
+@keyframes dayNightCycle {
+  0% {
+    filter: brightness(0.2); /* simulating night */
+  }
+  40% {
+    filter: brightness(0.4); /* simulating night */
+  }
+  50% {
+    filter: brightness(1); /* midday */
+  }
+  90% {
+    filter: brightness(0.3); /* returning to night */
+  }
+  100% {
+    filter: brightness(0.2); /* returning to night */
+  }
+}
+
+.cloud {
+  position: absolute;
+  top: 0; /* Adjust this value as required to position the cloud vertically */
+  left: -20%; /* Start position off-screen to the left */
+  opacity: 0.8; /* Adjust this if you want the cloud to be more or less transparent */
+  animation: driftCloud 60s linear infinite,
+    dayNightCycle 60s infinite alternate;
+  z-index: 1; /* Keeping the cloud below the birds */
+}
+@keyframes driftCloud {
+  0% {
+    left: -150%; /* Start from far left */
+  }
+  100% {
+    left: 250%; /* Move to far right */
+  }
+}
+.raindrop {
+  position: absolute;
+  bottom: 0; /* or adjust it to start from the top position of the cloud */
+  width: 2px;
+  height: 10px;
+  background-color: blue;
+  animation: rainDropAnimation 1s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes rainDropAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  width: 2px;
+  height: 2px;
+  animation: combinedShimmerVisibility 60s infinite;
+}
+
+@keyframes combinedShimmerVisibility {
+  0% {
+    opacity: 0.8;
+  }
+  8% {
+    opacity: 0.4; /* stars visible but at low shimmer */
+  }
+  10% {
+    opacity: 0; /* stars fully hidden */
+  }
+  20%,
+  75% {
+    opacity: 0; /* stars visible but at low shimmer */
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+.moving-star {
+  animation: moveStarLinearly 60s linear infinite;
+}
+
+@keyframes moveStarLinearly {
+  0% {
+    opacity: 0.8;
+    transform: translateX(30vw);
+  }
+  8% {
+    opacity: 0.4;
+    transform: translateX(50vw);
+  }
+  10% {
+    opacity: 0; /* stars fully hidden */
+  }
+  20%,
+  75% {
+    opacity: 0; /* stars visible but at low shimmer */
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.8;
+    transform: translateX(20vw);
+  }
+}
+
+.moon {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+  box-shadow: -15px 15px 0 5px white;
+  border-radius: 50%;
+  top: 15%;
+  left: 15%;
+  animation: moonRise 60s forwards infinite;
+}
+
+@keyframes moonRise {
+  0% {
+    opacity: 0.8;
+    box-shadow: 15px 15px 0 5px white;
+  }
+  8% {
+    opacity: 0.4;
+    box-shadow: 25px 25px 0 5px white;
+  }
+  10% {
+    opacity: 0.2;
+    box-shadow: 26px 26px 0 5px white;
+  }
+  20%,
+  75% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0.8;
+    box-shadow: 100px 100px 0 5px white;
+  }
+  100% {
+    opacity: 0.8;
+    box-shadow: 15px 15px 0 5px white;
+  }
+}
+
+.bird {
+  width: 100px;
+  position: absolute;
+  bottom: 70%;
+  height: auto;
+  z-index: 1;
+  left: -50%;
+  bottom: 65%;
+  animation: moveBird 10s linear infinite;
+  transform: scaleX(-1);
+}
+
+@keyframes moveBirdRight {
+  0% {
+    left: -50%;
+    bottom: 65%;
+  }
+  50% {
+    bottom: 75%;
+  }
+  100% {
+    left: 150%;
+    bottom: 60%;
+  }
+}
+
+@keyframes moveBirdLeft {
+  0% {
+    left: 150%;
+    bottom: 65%;
+  }
+  50% {
+    bottom: 75%;
+  }
+  100% {
+    left: -50%;
+    bottom: 60%;
+  }
+}
+.particle {
+  position: absolute;
+  background-color: white;
+  width: 2px;
+  height: 2px;
+  opacity: 0.7;
+  animation: drift 20s linear infinite, dayNightCycle 60s infinite alternate;
+  animation-delay: calc(-20s * random()); /* will be replaced in JavaScript */
+}
+
+@keyframes drift {
+  0% {
+    transform: translateX(0) translateY(-100%); /* start above the viewport */
+  }
+  90% {
+  }
+  100% {
+    transform: translateX(-10vw) translateY(110vh); /* drift diagonally downwards and slightly to the left */
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 0.8em;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* slightly transparent black */
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 98, 0, 0.3) 0%,
+    rgba(9, 9, 121, 0) 50%,
+    rgba(0, 212, 255, 0.3) 100%
+  );
+  pointer-events: none;
+}
+
+footer a {
+  color: #ffd700; /* golden color for links */
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
