@@ -53,6 +53,21 @@ html {
     left: 250%;
   }
 }
+.quote-section {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+
+  text-align: center;
+  max-width: 80%;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #000;
+  border-radius: 8px;
+}
+
 .raindrop {
   position: absolute;
   bottom: 0;

@@ -9,6 +9,10 @@
   <body>
     <div class="scene"></div>
     <img src="./cloud.png" class="cloud" alt="A drifting cloud" />
+    <div id="quoteDisplay" class="quote-section">
+      <p id="quoteText"></p>
+    </div>
+
     <div class="stars"></div>
     <div class="moon"></div>
 
@@ -28,6 +32,67 @@
         Pixabay
       </a>
     </footer>
+    <script src="quotes.js"></script>
+
+    <script>
+      function cleanText(text) {
+        return text.replace(/\s+/g, " ").trim();
+      }
+
+      function setFontSizeBasedOnWords(text) {
+        const cleanedText = cleanText(text);
+        const words = cleanedText.split(" ").length;
+        let fontSize;
+
+        if (words < 5) {
+          fontSize = "50px";
+        } else if (words <= 30) {
+          fontSize = "50px";
+        } else if (words <= 60) {
+          fontSize = "40px";
+        } else {
+          fontSize = "30px";
+        }
+
+        return fontSize;
+      }
+
+      function estimateReadingTime(text) {
+        const words = text.split(/\s+/).length;
+
+        if (words <= 5) {
+          return 10 * 1000;
+        } else if (words <= 10) {
+          return 20 * 1000;
+        } else if (words <= 15) {
+          return 25 * 1000;
+        } else if (words <= 20) {
+          return 30 * 1000;
+        } else if (words <= 25) {
+          return 35 * 1000;
+        } else {
+          return 40 * 1000;
+        }
+      }
+      let currentIndex = 0;
+
+      function displayNextQuote() {
+        const currentQuote = quotes[currentIndex];
+        const quoteElement = document.getElementById("quoteText");
+
+        const fontSize = setFontSizeBasedOnWords(currentQuote);
+        quoteElement.style.fontSize = fontSize;
+
+        quoteElement.innerText = currentQuote;
+
+        currentIndex = (currentIndex + 1) % quotes.length;
+
+        const readingTime = estimateReadingTime(currentQuote);
+        setTimeout(displayNextQuote, readingTime);
+      }
+
+      displayNextQuote();
+    </script>
     <script>
       const cloudCount = 10;
 
